@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography, createTheme, Box, Link } from '@mui/material'
-import { become_seller_otp, reset_password, reset_password_otp, user_login } from '../../Redux/Action/AuthAction'
+import { become_seller_otp} from '../../Redux/Action/AuthAction'
 
 export default function GetSellerOTP({ isSeller, setisSeller }) {
+    const alert = useSelector(state=>state.Alert?.alert[0]?.message)
+    setisSeller(alert === 'User Details Updated' ? false : true)
+
     const theme = createTheme()
     const [otp, setotp] = useState()
     const dispatch = useDispatch()

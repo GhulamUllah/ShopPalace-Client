@@ -1,4 +1,4 @@
-const baseurl='http://localhost:5000'
+const baseurl='https://shop-posh-backend.onrender.com'
 
 
 export default baseurl

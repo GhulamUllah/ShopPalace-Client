@@ -47,6 +47,10 @@ export default function AddProduct({ isAddProduct, setisAddProduct }) {
     }
     return (
         <Dialog open={isAddProduct} fullWidth>
+            {
+                uploadLoading && <Box sx={{ bgcolor: 'rgba(0,0,0,.2)', minHeight: '120vh', width: '100vw', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', zIndex: 1, position: 'absolute', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress sx={{ position: 'absolute', zIndex: 2 }} /></Box>
+
+            }
             <DialogTitle>
                 <Typography variant='h5' sx={{ fontWeight: 700, color: theme.palette.primary.main, textAlign: 'center' }}>Add Product</Typography>
             </DialogTitle>

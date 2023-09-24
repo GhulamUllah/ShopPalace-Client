@@ -4,6 +4,8 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, T
 import { update_user } from '../../Redux/Action/AuthAction'
 
 export default function EditProfile({ isEditProfile, setisEditProfile }) {
+    const alert = useSelector(state=>state.Alert?.alert[0]?.message)
+    setisEditProfile(alert === 'User Details Updated' ? false : true)
     const theme = createTheme()
     const [first_name, setfirst_name] = useState()
     const [last_name, setlast_name] = useState()

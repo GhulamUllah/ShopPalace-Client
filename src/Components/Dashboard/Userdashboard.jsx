@@ -12,6 +12,8 @@ import { useNavigate } from 'react-router-dom'
 import AddProduct from './AddProduct';
 import GetSellerOTP from './GetSellerOTP';
 export default function Userdashboard() {
+    const alert = useSelector(state=>state.Alert?.alert[0]?.message)
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector(state => state.Auth.user)
@@ -44,6 +46,11 @@ export default function Userdashboard() {
             }
         )
     }
+    useEffect(()=>{
+        if(alert === 'Email Sent Successfully Please check your mailbox'){
+            setisSeller(true)
+        }
+    },[alert])
 
 
     useEffect(() => {
@@ -112,7 +119,7 @@ export default function Userdashboard() {
                             </TableRow>
                             <TableRow>
                                 <TableCell>{(user.user_type === 'admin' || user.user_type === 'Seller') ? 'Add Product' : 'Become Seller'}</TableCell>
-                                <TableCell><Button variant='outlined' endIcon={<AddIcon />} onClick={() => { (user.user_type === 'admin' || user.user_type === 'Seller') ? setisAddProduct(true) : (dispatch(sentsellerotp({ email: user.email })) && setisSeller(true)) }}>{(user.user_type === 'admin' || user.user_type === 'Seller') ? 'Add' : 'Seller'}</Button></TableCell>
+                                <TableCell><Button variant='outlined' endIcon={<AddIcon />} onClick={() => { (user.user_type === 'admin' || user.user_type === 'Seller') ? setisAddProduct(true) : (dispatch(sentsellerotp({ email: user.email }))) }}>{(user.user_type === 'admin' || user.user_type === 'Seller') ? 'Add' : 'Seller'}</Button></TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Edit Profile</TableCell>

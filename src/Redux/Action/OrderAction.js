@@ -9,6 +9,8 @@ export let getallorders = () => async (dispatch) => {
         const order = await axios.get(`${baseurl}/order`)
         console.log(order)
         dispatch({ type: All_Orders, payload: order.data.data })
+        dispatch({ type: Order_Loading_True })
+
     } catch (error) {
         dispatch({ type: Order_Loading_False })
         dispatch(Alertapp(error.response.data.success,error.response.data.message))
@@ -23,6 +25,8 @@ export let getuserorders = () => async (dispatch) => {
         const order = await axios.get(`${baseurl}/order/user`)
         console.log(order)
         dispatch({ type: User_Orders, payload: order.data.data })
+        dispatch({ type: Order_Loading_True })
+
     } catch (error) {
         dispatch({ type: Order_Loading_False })
         dispatch(Alertapp(error.response.data.success,error.response.data.message))
@@ -36,6 +40,8 @@ export let getsingleorder = (id) => async (dispatch) => {
         const order = await axios.get(`${baseurl}/order/single/${id}`)
         console.log(order)
         dispatch({ type: Single_Order, payload: order.data.data })
+        dispatch({ type: Order_Loading_True })
+
     } catch (error) {
         dispatch({ type: Order_Loading_False })
         dispatch(Alertapp(error.response.data.success,error.response.data.message))
@@ -52,6 +58,8 @@ export let createorder = (option) => async (dispatch) => {
 
         console.log(order)
         dispatch({ type: Create_Order, payload: order.data.data })
+        dispatch({ type: Order_Loading_True })
+
     } catch (error) {
         dispatch({ type: Order_Loading_False })
         console.log(error)
@@ -67,6 +75,8 @@ export let deleteorder = (id) => async (dispatch) => {
         console.log(order)
         dispatch(Alertapp(order.data.success,order.data.message))
         dispatch({ type: Delete_Order, payload: id })
+        dispatch({ type: Order_Loading_True })
+
     } catch (error) {
         dispatch({ type: Order_Loading_False })
         console.log(error)
@@ -82,6 +92,8 @@ export let updateorder = (id, option) => async (dispatch) => {
         console.log(order)
         dispatch(Alertapp(order.data.success,order.data.message))
         dispatch({ type: Update_Order, payload: order.data.data })
+        dispatch({ type: Order_Loading_True })
+
     } catch (error) {
         dispatch({ type: Order_Loading_False })
         dispatch(Alertapp(error.response.data.success,error.response.data.message))
@@ -97,6 +109,8 @@ export let updatepayment = (id) => async (dispatch) => {
         console.log(order)
         dispatch(Alertapp(order.data.success,order.data.message))
         dispatch({ type: Update_Order, payload: order.data.data })
+        dispatch({ type: Order_Loading_True })
+
     } catch (error) {
         dispatch({ type: Order_Loading_False })
         dispatch(Alertapp(error.response.data.success,error.response.data.message))

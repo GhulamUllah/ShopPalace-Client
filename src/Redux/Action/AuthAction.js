@@ -132,7 +132,7 @@ export let become_seller_otp = (option) => async (dispatch) => {
         dispatch({ type: User_Loading_Attempt })
         const user = await axios.put(`${baseurl}/user/become-seller`, option)
         dispatch(Alertapp(user.data.success,user.data.message))
-
+        dispatch({type:User_Login,payload:user.data.data})
         console.log(user)
         dispatch({ type: User_Loading_True })
     } catch (error) {
@@ -199,6 +199,7 @@ export let update_user = (option) => async (dispatch) => {
         dispatch({ type: User_Loading_Attempt })
         const user = await axios.put(`${baseurl}/user/update`, option)
         console.log(user)
+        dispatch({type:User_Login,payload:user.data.data})
         dispatch(Alertapp(user.data.success,user.data.message))
 
         dispatch({ type: User_Loading_True })

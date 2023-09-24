@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import SetAxiosToken from './Redux/SetAxiosToken';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loaduser } from './Redux/Action/AuthAction';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Userdashboard from './Components/Dashboard/Userdashboard';
@@ -21,8 +21,13 @@ import Homepage from './Components/Home/Homepage';
 import FAQs from './Components/Home/FAQs';
 import Pagination from './Components/Home/Pagination';
 import Alertpop from './Components/AlertLayout/Alertpop';
+import { Box, CircularProgress } from '@mui/material';
 
 function App() {
+  const userloading = useSelector(state=>state.Auth.loading)
+  const productloading = useSelector(state=>state.Product.loading)
+  const cartloading = useSelector(state=>state.Cart.loading)
+  const orderloading = useSelector(state=>state.Order.loading)
   SetAxiosToken(localStorage.token)
   const dispatch = useDispatch()
   useEffect(() => {
@@ -37,6 +42,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      {
+              (  userloading || productloading || cartloading || orderloading) && <Box sx={{ bgcolor: 'rgba(0,0,0,.2)', minHeight: '120vh', width: '100vw', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', zIndex: 1, position: 'fixed', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress sx={{ position: 'absolute', zIndex: 2 }} /></Box>
+
+      }
         <Header />
         <Alertpop/>
         <Routes>
