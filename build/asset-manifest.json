@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7862b5c7.css",
+    "main.js": "/static/js/main.19b8303d.js",
+    "static/js/787.d3befce1.chunk.js": "/static/js/787.d3befce1.chunk.js",
+    "static/media/Best-Ecommerce-Platforms.webp": "/static/media/Best-Ecommerce-Platforms.6a6302902c234de9f587.webp",
+    "index.html": "/index.html",
+    "main.7862b5c7.css.map": "/static/css/main.7862b5c7.css.map",
+    "main.19b8303d.js.map": "/static/js/main.19b8303d.js.map",
+    "787.d3befce1.chunk.js.map": "/static/js/787.d3befce1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7862b5c7.css",
+    "static/js/main.19b8303d.js"
+  ]
+}
