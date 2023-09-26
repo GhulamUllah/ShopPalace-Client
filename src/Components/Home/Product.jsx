@@ -6,14 +6,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { search_Product, sort_Product } from '../../Redux/Action/ProductAction';
 import { addtocart } from '../../Redux/Action/CartAction';
 import { ArrowDownward } from '@mui/icons-material';
+import Login from '../Authorization/Login';
 
 export default function Product() {
     const theme = createTheme()
     const productlist = useSelector(state => state.Product.allproducts)
     const searchlist = useSelector(state => state.Product.search)
+    const auth = useSelector(state => state.Auth.isAuthenticated)
     const sortlist = useSelector(state => state.Product.sort)
     const [search, setsearch] = useState()
     const [sort, setSort] = useState(false)
+    const [islogin, setislogin] = useState(false)
     const dispatch = useDispatch()
     const handleSearch = () => {
         dispatch(search_Product({ search: search }))
@@ -23,9 +26,12 @@ export default function Product() {
        setSort(false)
        
     }
-    console.log(sortlist)
+    console.log(auth)
     return (
         <>
+        {
+            islogin && <Login islogin={islogin} setislogin={setislogin}/>
+        }
             <Box sx={{display:'flex',justifyContent:'space-around',alignItems:'center'}}>
             <Box sx={{ position: 'relative', m: 2, p: 2, display: 'flex', gap: 2, justifyContent: 'center' }} className='SeachClass'>
                 <TextField placeholder='Search' onChange={(e) => setsearch(e.target.value)} />
@@ -59,7 +65,7 @@ export default function Product() {
                             <Typography sx={{my:1,color:'success.light'}}><b style={{color:theme.palette.info.dark}}>Category: </b>{item.category}</Typography>
                         </Box>
                         <Box>
-                            <Button variant='outlined' endIcon={<AddShoppingCartIcon />} onClick={() => dispatch(addtocart(item._id))} sx={{my:2}}>Add</Button>
+                            <Button variant='outlined' endIcon={<AddShoppingCartIcon />} onClick={() => auth ? dispatch(addtocart(item._id)) : setislogin(true) } sx={{my:2}}>Add</Button>
                         </Box>
 
 

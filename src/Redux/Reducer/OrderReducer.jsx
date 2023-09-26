@@ -29,7 +29,6 @@ const OrderReducer = (state = initialState, action) => {
         case Create_Order:
             return {
                 ...state,
-                allorders: [...state.allorders, action.payload],
                 userorders: [...state.userorders, action.payload]
             }
         case Delete_Order:

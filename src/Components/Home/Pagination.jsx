@@ -7,10 +7,13 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import { addtocart } from '../../Redux/Action/CartAction';
 import { paginate_Product } from '../../Redux/Action/ProductAction';
+import Login from '../Authorization/Login';
 
 export default function Pagination() {
     const productlist = useSelector(state => state.Product.paginate.data)
     let pageArray = useSelector(state=>state.Product.paginate.totalPages)
+    let auth = useSelector(state=>state.Auth.isAuthenticated)
+    const [islogin,setislogin] = useState(false)
     
    
  
@@ -27,7 +30,9 @@ export default function Pagination() {
 
     return (
         <>
-           
+           {
+            islogin && <Login islogin={islogin} setislogin={setislogin}/>
+           }
             <Box >
             <Typography variant='h4' sx={{color:'success.main',fontWeight:700,textDecoration:'underline',my:2,textAlign:'center'}}>Paginate Products</Typography>
 
@@ -44,7 +49,7 @@ export default function Pagination() {
                             <Typography><b>Category: </b>{item.category}</Typography>
                         </Box>
                         <Box>
-                            <Button variant='outlined' endIcon={<AddShoppingCartIcon />} onClick={() => dispatch(addtocart(item._id))}>Add</Button>
+                            <Button variant='outlined' endIcon={<AddShoppingCartIcon />} onClick={() => auth ? dispatch(addtocart(item._id)) : setislogin(true)}>Add</Button>
                         </Box>
 
 
