@@ -43,7 +43,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
       {
-              (  userloading || productloading || cartloading || orderloading) && <Box sx={{ bgcolor: 'rgba(0,0,0,.2)', minHeight: '120vh', width: '100vw', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', zIndex: 1, position: 'fixed', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress sx={{ position: 'absolute', zIndex: 2 }} /></Box>
+              (  userloading || productloading || cartloading || orderloading) && <Box sx={{ bgcolor: 'rgba(0,0,0,.2)', minHeight: '120vh', width: '100vw', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', zIndex: 'tooltip', position: 'fixed', display: 'flex', justifyContent: 'center', alignItems: 'center' }}><CircularProgress sx={{ position: 'absolute', zIndex: 2 }} /></Box>
 
       }
         <Header />
