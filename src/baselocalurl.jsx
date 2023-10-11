@@ -1,2 +1,2 @@
-const baselocalurl = 'http://localhost:3000'
+const baselocalurl = 'https://shop-palace-client.vercel.app'
 export default baselocalurl
