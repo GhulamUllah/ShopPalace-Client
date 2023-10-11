@@ -1,4 +1,4 @@
-const baseurl='https://shop-posh-backend.onrender.com'
+const baseurl='https://posh-palace-backend.vercel.app/'
 
 
 export default baseurl
