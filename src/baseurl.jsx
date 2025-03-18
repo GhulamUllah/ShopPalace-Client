@@ -1,4 +1,3 @@
-const baseurl='https://posh-palace-backend.vercel.app'
+const baseurl = process.env.REACT_APP_BASE_URL;
 
-
-export default baseurl
+export default baseurl;
